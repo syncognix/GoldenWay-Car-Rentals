@@ -10,6 +10,8 @@ import { FinalCta } from '../components/sections/FinalCta'
 import { rentalSteps } from '../data/steps'
 import { breadcrumbSchema } from '../config/schema'
 import './HowItWorksPage.css'
+import lotHood from '../media/lot/lot-camry-hood.webm'
+import lotHoodPoster from '../media/lot/lot-camry-hood.jpg'
 
 export default function HowItWorksPage() {
   const [active, setActive] = useState(0)
@@ -41,6 +43,7 @@ export default function HowItWorksPage() {
       />
       <PageHero
         mediaKey="how-it-works-hero"
+        plate={{ kind: 'clip', src: lotHood, poster: lotHoodPoster, label: 'Real footage', caption: 'Toyota Camry' }}
         backdrop="horizon"
         seed={12}
         index="GW/03"

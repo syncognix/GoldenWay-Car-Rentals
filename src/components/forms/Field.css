@@ -159,3 +159,13 @@
 .check.has-error .check__box {
   border-color: var(--danger);
 }
+
+/* Controls never force their field wider than its grid track (date inputs
+   carry a large intrinsic width and would otherwise spill into neighbours). */
+.field__control {
+  min-width: 0;
+  max-width: 100%;
+}
+.field__control[type='date'] {
+  display: block;
+}

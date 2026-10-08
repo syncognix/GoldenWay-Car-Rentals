@@ -2,6 +2,7 @@ import { useRef, type ReactNode } from 'react'
 import type { HeroKey } from '../../media'
 import type { BackdropVariant } from '../media/backdropVariants'
 import { HeroMedia } from '../media/HeroMedia'
+import { HeroPlate, type Plate } from './HeroPlate'
 import { SplitLines } from '../ui/Reveal'
 import { TechLabel } from '../ui/TechLabel'
 import { useGsap, MOTION_ANY } from '../../hooks/useGsap'
@@ -24,6 +25,8 @@ type Props = {
   fallbackAlt?: string
   size?: 'full' | 'tall' | 'medium'
   chapter?: string
+  /** Real GoldenWay media composed beside the headline. */
+  plate?: Plate
 }
 
 /**
@@ -44,6 +47,7 @@ export function PageHero({
   fallbackAlt,
   size = 'tall',
   chapter = 'Intro',
+  plate,
 }: Props) {
   const ref = useRef<HTMLElement>(null)
 
@@ -52,12 +56,13 @@ export function PageHero({
       const st = { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true }
       gsap.to('.page-hero__media', { scale: 1.12, yPercent: 8, ease: 'none', scrollTrigger: st })
       gsap.to('.page-hero__shade', { opacity: 0.85, ease: 'none', scrollTrigger: st })
-      gsap.to('.page-hero__content', { yPercent: -18, opacity: 0.2, ease: 'none', scrollTrigger: st })
+      gsap.to('.page-hero__copy', { yPercent: -18, opacity: 0.2, ease: 'none', scrollTrigger: st })
+      gsap.to('.page-hero__plate', { yPercent: -7, ease: 'none', scrollTrigger: st })
     })
   })
 
   return (
-    <section ref={ref} className={`page-hero page-hero--${size} surface-dark`} data-chapter={chapter}>
+    <section ref={ref} className={`page-hero page-hero--${size} ${plate ? 'page-hero--plated' : ''} surface-dark`} data-chapter={chapter}>
       <div className="page-hero__media">
         <HeroMedia
           mediaKey={mediaKey}
@@ -79,14 +84,22 @@ export function PageHero({
       </div>
 
       <div className="page-hero__content container">
-        <TechLabel index={index} className="page-hero__eyebrow">
-          {eyebrow}
-        </TechLabel>
-        <SplitLines as="h1" immediate delay={250} className="page-hero__title t-h1" lines={title} />
-        {intro && <p className="page-hero__intro t-lead">{intro}</p>}
-        {actions && <div className="page-hero__actions">{actions}</div>}
+        <div className="page-hero__copy">
+          <TechLabel index={index} className="page-hero__eyebrow">
+            {eyebrow}
+          </TechLabel>
+          <SplitLines as="h1" immediate delay={250} className="page-hero__title t-h1" lines={title} />
+          {intro && <p className="page-hero__intro t-lead">{intro}</p>}
+          {actions && <div className="page-hero__actions">{actions}</div>}
+          {plate && meta && <div className="page-hero__meta-inline">{meta}</div>}
+        </div>
+        {plate && (
+          <div className="page-hero__plate">
+            <HeroPlate plate={plate} />
+          </div>
+        )}
       </div>
-      {meta && <div className="page-hero__meta container">{meta}</div>}
+      {!plate && meta && <div className="page-hero__meta container">{meta}</div>}
     </section>
   )
 }

@@ -54,3 +54,44 @@
     grid-auto-rows: 34vw;
   }
 }
+
+/* A single photo becomes one wide studio plate rather than a lonely tile */
+.vgallery--1 .vgallery__item:first-child {
+  grid-column: 1 / -1;
+  grid-row: span 2;
+  border-radius: clamp(20px, 2vw, 30px);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(50% 48% at 50% 34%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 74%),
+    linear-gradient(180deg, var(--bg-2), var(--bg-1));
+}
+.vgallery--1 .vehicle-image--cutout {
+  background: none;
+}
+.vgallery--1 .vehicle-image--cutout img {
+  padding: 4% 14% 7%;
+  object-position: 50% 100%;
+}
+.vgallery--1 .vehicle-image--cutout::before {
+  bottom: 4%;
+}
+.vgallery__ghost {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  translate: -50% -50%;
+  font-size: clamp(6rem, 19vw, 19rem);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--gold) 34%, transparent);
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .vgallery--1 {
+    grid-auto-rows: 36vw;
+  }
+}

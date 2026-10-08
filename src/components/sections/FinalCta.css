@@ -55,3 +55,81 @@
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   Closing scene: a studio car rolls up beneath the headline.
+   ========================================================================== */
+.final-cta {
+  min-height: max(760px, 100svh);
+  align-items: flex-start;
+}
+.final-cta__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(120px, 15vh, 180px);
+  padding-bottom: 0;
+  gap: clamp(26px, 3.4vw, 48px);
+}
+.final-cta__stage {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: clamp(-60px, -3vw, -20px);
+  width: min(78vw, 1040px);
+  aspect-ratio: 2100 / 1000;
+  translate: -50% 0;
+  pointer-events: none;
+}
+.final-cta__floor {
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: 14%;
+  height: 34%;
+  background:
+    radial-gradient(40% 22% at 50% 62%, rgb(0 0 0 / 0.9), transparent 100%),
+    radial-gradient(50% 50% at 50% 60%, rgb(214 179 111 / 0.16), transparent 72%);
+}
+.final-cta__floor::before {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(236 213 164 / 0.5) 50%, transparent);
+  box-shadow: 0 0 22px rgb(214 179 111 / 0.45);
+}
+.final-cta__car {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  filter: drop-shadow(0 30px 30px rgb(0 0 0 / 0.6)) brightness(1.02);
+  will-change: transform;
+}
+/* Keep the copy legible where the car's roofline rises behind it */
+.final-cta .hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 40% at 50% 30%, rgb(8 9 10 / 0.55), transparent 80%);
+}
+@media (max-width: 767px) {
+  .final-cta {
+    min-height: 0;
+    padding-bottom: 62vw;
+  }
+  .final-cta__stage {
+    width: 120vw;
+    bottom: -4vw;
+  }
+}
+@media (min-width: 768px) {
+  .final-cta__stage {
+    width: min(62vw, 860px);
+    bottom: clamp(-90px, -5vw, -40px);
+  }
+}

@@ -1,0 +1,183 @@
+/* Plate: the real-media half of an inner-page hero */
+.hero-plate {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  width: 100%;
+  animation: hero-plate-in 1.5s var(--ease-out) 0.45s both;
+}
+@keyframes hero-plate-in {
+  from {
+    opacity: 0;
+    clip-path: inset(18% 0 0 0 round 28px);
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0 round 0);
+    transform: none;
+  }
+}
+.hero-plate__stage {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: clamp(18px, 1.8vw, 28px);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgb(236 213 164 / 0.2);
+  background: #121415;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.4),
+    0 60px 120px -50px rgb(0 0 0 / 0.95);
+}
+/* Cinematic grade over real footage */
+.hero-plate__stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(155deg, rgb(214 179 111 / 0.18), transparent 42%),
+    linear-gradient(180deg, rgb(8 9 10 / 0.25), transparent 26%, transparent 66%, rgb(8 9 10 / 0.6));
+}
+.hero-plate__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(1.06);
+}
+
+.hero-plate__cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgb(247 244 236 / 0.16);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.hero-plate__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fg-2);
+}
+.hero-plate__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-2);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+/* Stack: three photos fanned like prints on a table */
+.hero-plate--stack .hero-plate__stage {
+  overflow: visible;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.hero-plate--stack .hero-plate__stage::after {
+  display: none;
+}
+.hero-plate__card {
+  position: absolute;
+  width: 64%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgb(236 213 164 / 0.2);
+  box-shadow: 0 40px 90px -40px rgb(0 0 0 / 0.95);
+  filter: saturate(0.9) contrast(1.05);
+}
+.hero-plate__card--1 {
+  left: 0;
+  top: 10%;
+  rotate: -7deg;
+}
+.hero-plate__card--2 {
+  right: 0;
+  top: 0;
+  rotate: 5deg;
+}
+.hero-plate__card--3 {
+  left: 20%;
+  top: 26%;
+  rotate: -1deg;
+  z-index: 2;
+}
+
+/* Line-up: studio cutouts on a polished floor */
+.hero-plate--lineup .hero-plate__stage {
+  aspect-ratio: 16 / 10;
+  overflow: visible;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.hero-plate--lineup .hero-plate__stage::after {
+  display: none;
+}
+.hero-plate__floor {
+  position: absolute;
+  left: -6%;
+  right: -6%;
+  top: 74%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(236 213 164 / 0.45) 50%, transparent);
+  box-shadow: 0 0 22px rgb(214 179 111 / 0.4);
+}
+.hero-plate__floor::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: -40px;
+  height: 80px;
+  background: radial-gradient(50% 50% at 50% 50%, rgb(214 179 111 / 0.14), transparent);
+}
+.hero-plate__car {
+  position: absolute;
+  object-fit: contain;
+  object-position: 50% 100%;
+  filter: drop-shadow(0 22px 18px rgb(0 0 0 / 0.6));
+}
+.hero-plate__car--1 {
+  left: -4%;
+  bottom: 24%;
+  width: 54%;
+  height: 54%;
+  filter: drop-shadow(0 22px 18px rgb(0 0 0 / 0.6)) brightness(0.72);
+}
+.hero-plate__car--2 {
+  right: -6%;
+  bottom: 24%;
+  width: 54%;
+  height: 54%;
+  filter: drop-shadow(0 22px 18px rgb(0 0 0 / 0.6)) brightness(0.72);
+}
+.hero-plate__car--3 {
+  left: 14%;
+  bottom: 18%;
+  width: 72%;
+  height: 72%;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-plate {
+    animation: none;
+  }
+}
+.hero-plate__card {
+  width: 58%;
+}
+.hero-plate__card--2 {
+  right: 4%;
+}

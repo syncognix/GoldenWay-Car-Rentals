@@ -1,10 +1,10 @@
-import { useRef } from 'react'
+import { useRef, type CSSProperties } from 'react'
 import { HeroMedia } from '../media/HeroMedia'
 import { QuickBookPanel } from '../booking/QuickBookPanel'
 import { Button } from '../ui/Button'
 import { TechLabel } from '../ui/TechLabel'
-import { site, rateLabel } from '../../config/site'
-import camryImage from '../../media/fleet/toyota-camry-2015/01.png'
+import { site, rateLabel, formatCurrency } from '../../config/site'
+import camryImage from '../../media/fleet/toyota-camry-2015/01.webp'
 import { useGsap, MOTION_ANY } from '../../hooks/useGsap'
 import { gsap } from '../../lib/gsap'
 import './HomeHero.css'
@@ -16,6 +16,9 @@ export function HomeHero() {
     mm.add(MOTION_ANY, () => {
       const st = { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true }
       gsap.to('.home-hero__media', { scale: 1.14, ease: 'none', scrollTrigger: st })
+      // The car rolls forward and toward camera as the page leaves the hero.
+      gsap.to('.home-hero__vehicle', { xPercent: -7, yPercent: 10, scale: 1.08, ease: 'none', scrollTrigger: st })
+      gsap.to('.home-hero__callouts', { opacity: 0, ease: 'none', scrollTrigger: { ...st, end: '35% top' } })
       gsap.to('.home-hero__tint', { opacity: 0.9, ease: 'none', scrollTrigger: st })
       gsap.to('.home-hero__line--1', { xPercent: -6, ease: 'none', scrollTrigger: st })
       gsap.to('.home-hero__line--3', { xPercent: 5, ease: 'none', scrollTrigger: st })
@@ -29,8 +32,24 @@ export function HomeHero() {
         <HeroMedia mediaKey="home-hero" backdrop="road" seed={11} priority tint="medium" />
       </div>
       <div className="home-hero__tint" aria-hidden="true" />
-      <div className="home-hero__vehicle" aria-hidden="true">
+      <div className="home-hero__vehicle" aria-hidden="true" style={{ '--car': `url(${camryImage})` } as CSSProperties}>
+        <span className="home-hero__floor" />
         <img src={camryImage} alt="" fetchPriority="high" decoding="async" />
+        <span className="home-hero__sheen" />
+        <ul className="home-hero__callouts">
+          <li className="home-hero__callout home-hero__callout--model">
+            <span className="t-mono">Model</span>
+            <span>2015 Toyota Camry</span>
+          </li>
+          <li className="home-hero__callout home-hero__callout--rate">
+            <span className="t-mono">Weekly from</span>
+            <span className="t-num">{formatCurrency(site.terms.weeklyRateFrom)}</span>
+          </li>
+          <li className="home-hero__callout home-hero__callout--cover">
+            <span className="t-mono">Cover</span>
+            <span>Insurance included</span>
+          </li>
+        </ul>
       </div>
 
       {/* Technical frame */}
@@ -71,10 +90,6 @@ export function HomeHero() {
                 Explore the fleet
               </Button>
             </div>
-            <a href={site.phone.href} className="home-hero__phone">
-              <span className="t-mono c-gold">Call</span>
-              <span className="t-num">{site.phone.display}</span>
-            </a>
           </div>
         </div>
 

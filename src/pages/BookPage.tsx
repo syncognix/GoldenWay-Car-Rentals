@@ -4,6 +4,8 @@ import { BookingWizard } from '../components/booking/BookingWizard'
 import { Button } from '../components/ui/Button'
 import { breadcrumbSchema } from '../config/schema'
 import { rateLabel, site } from '../config/site'
+import lotSide from '../media/lot/lot-camry-side.webm'
+import lotSidePoster from '../media/lot/lot-camry-side.jpg'
 
 export default function BookPage() {
   return (
@@ -18,6 +20,7 @@ export default function BookPage() {
       />
       <PageHero
         mediaKey="booking-hero"
+        plate={{ kind: 'clip', src: lotSide, poster: lotSidePoster, label: 'Real footage', caption: 'Toyota Camry' }}
         backdrop="road"
         seed={8}
         size="medium"

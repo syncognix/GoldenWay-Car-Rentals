@@ -5,6 +5,9 @@ import { FinalCta } from '../components/sections/FinalCta'
 import { TechLabel } from '../components/ui/TechLabel'
 import { breadcrumbSchema } from '../config/schema'
 import './GalleryPage.css'
+import stackA from '../media/images/lot-gray-camry.jpg'
+import stackB from '../media/images/lot-cabin.jpg'
+import stackC from '../media/images/lot-white-camry-front.jpg'
 
 const band = ['GoldenWay', 'Atlanta', 'Peachtree St.', 'Unlimited miles', 'No deposit', 'Weekly rentals']
 
@@ -21,6 +24,7 @@ export default function GalleryPage() {
       />
       <PageHero
         mediaKey="gallery-hero"
+        plate={{ kind: 'stack', label: 'Visual journal', caption: 'From the lot', photos: [ { src: stackA, alt: '' }, { src: stackB, alt: '' }, { src: stackC, alt: 'White Toyota Camry from the GoldenWay fleet' } ] }}
         backdrop="bokeh"
         seed={31}
         index="GW/07"

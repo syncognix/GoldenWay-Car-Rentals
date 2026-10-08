@@ -19,4 +19,22 @@ export type Review = {
   date?: string
 }
 
-export const reviews: Review[] = []
+// Verbatim Google reviews, as published by GoldenWay on its Facebook page
+// (facebook.com/goldenwaycarrentals, review cards retrieved Oct 2026).
+export const reviews: Review[] = [
+  {
+    id: 'google-terrell',
+    quote:
+      'I had an excellent experience with this car rental service. The team was professional, friendly, and extremely easy to work with. The entire process was streamlined, straightforward, and efficient, which made renting a vehicle hassle-free. Communication was great, and everything was handled smoothly from start to finish. I truly appreciate the level of service and would definitely recommend them to anyone looking for a reliable and convenient car rental experience.',
+    name: 'Terrell',
+    rating: 5,
+    source: 'Google',
+  },
+  {
+    id: 'google-kevin',
+    quote: 'Quick, easy, and the car was in good condition, the pricing was clear, and the customer service was top-notch.',
+    name: 'Kevin',
+    rating: 5,
+    source: 'Google',
+  },
+]

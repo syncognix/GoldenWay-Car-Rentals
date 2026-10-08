@@ -98,8 +98,9 @@ const videos = Object.entries(videoFiles).reduce<Record<string, VideoSources>>((
 export function getHeroMedia(key: HeroKey): HeroMediaSet {
   const video = videos[key]
   const hasVideo = Boolean(video && (video.webm || video.mp4 || video.mobileMp4))
-  // Reuse the original site's artwork only for these below-the-fold sections.
-  const sectionPoster = key === 'atlanta' || key === 'final-cta' ? images['goldenway-original'] : undefined
+  // Reuse the original site's artwork only for the Atlanta section; the closing
+  // CTA stages a studio car instead so the two never show the same photo twice.
+  const sectionPoster = key === 'atlanta' ? images['goldenway-original'] : undefined
   return { video: hasVideo ? video : undefined, poster: posters[key] ?? sectionPoster }
 }
 

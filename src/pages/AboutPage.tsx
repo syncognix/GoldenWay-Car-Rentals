@@ -10,6 +10,7 @@ import { brandStory } from '../data/services'
 import { site } from '../config/site'
 import { breadcrumbSchema } from '../config/schema'
 import './AboutPage.css'
+import atlantaArtwork from '../media/images/goldenway-original.webp'
 
 /** Principles drawn directly from GoldenWay's stated mission. */
 const principles = [
@@ -31,6 +32,7 @@ export default function AboutPage() {
       />
       <PageHero
         mediaKey="about-hero"
+        plate={{ kind: 'photo', src: atlantaArtwork, alt: 'GoldenWay rental cars against the Atlanta skyline', label: 'GoldenWay', caption: 'Atlanta, GA' }}
         backdrop="city"
         seed={17}
         index="GW/04"

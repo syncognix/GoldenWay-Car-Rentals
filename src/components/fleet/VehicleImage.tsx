@@ -1,7 +1,7 @@
 import { SmartImage } from '../media/SmartImage'
 import type { Vehicle } from '../../data/vehicles'
 import { vehicleName } from '../../data/vehicles'
-import { vehicleImages } from '../../lib/vehicleImages'
+import { isCutout, vehicleImages } from '../../lib/vehicleImages'
 import './VehicleImage.css'
 
 type Props = {
@@ -20,7 +20,7 @@ export function VehicleImage({ vehicle, index = 0, className, priority }: Props)
       src={src}
       alt={index === 0 ? name : `${name} — photo ${index + 1}`}
       priority={priority}
-      className={`vehicle-image ${className ?? ''}`}
+      className={`vehicle-image ${isCutout(src) ? 'vehicle-image--cutout' : ''} ${className ?? ''}`}
       fallback={<VehiclePlaceholder label={name} />}
     />
   )

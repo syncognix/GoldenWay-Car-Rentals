@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 import { USDLoader } from 'three/addons/loaders/USDLoader.js'
-import camryCutout from '../../media/fleet/toyota-camry-2015/01.png'
+import camryCutout from '../../media/fleet/toyota-camry-2015/01.webp'
 
 const MODEL_URL = '/Toyota_Camry_2020.usdz'
 

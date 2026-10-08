@@ -2,6 +2,7 @@ import { Seo } from '../components/seo/Seo'
 import { HomeHero } from '../components/hero/HomeHero'
 import { IntroSection } from '../components/sections/IntroSection'
 import { FleetShowcase } from '../components/fleet/FleetShowcase'
+import { OnTheLot } from '../components/sections/OnTheLot'
 import { BentoSection } from '../components/sections/BentoSection'
 import { StorySection } from '../components/sections/StorySection'
 import { AtlantaSection } from '../components/sections/AtlantaSection'
@@ -26,6 +27,7 @@ export default function HomePage() {
       <HomeHero />
       <IntroSection />
       <FleetShowcase />
+      <OnTheLot />
       <BentoSection />
       <StorySection />
       <AtlantaSection />

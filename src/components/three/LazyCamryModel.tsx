@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
-import camryCutout from '../../media/fleet/toyota-camry-2015/01.png'
+import camryCutout from '../../media/fleet/toyota-camry-2015/01.webp'
 
 const CamryModel = lazy(() => import('./CamryModel'))
 

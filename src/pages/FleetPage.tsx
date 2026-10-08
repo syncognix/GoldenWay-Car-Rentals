@@ -12,6 +12,9 @@ import { vehicles, availableCategories, categoryLabels, type VehicleCategory } f
 import { breadcrumbSchema } from '../config/schema'
 import { rateLabel } from '../config/site'
 import './FleetPage.css'
+import lineupLeft from '../media/fleet/ford-escape/01.webp'
+import lineupRight from '../media/fleet/ford-fusion/01.webp'
+import lineupHero from '../media/fleet/toyota-camry-2015/01.webp'
 
 const isCategory = (v: string | null): v is VehicleCategory => Boolean(v && availableCategories.includes(v as VehicleCategory))
 
@@ -37,6 +40,7 @@ export default function FleetPage() {
       />
       <PageHero
         mediaKey="fleet-hero"
+        plate={{ kind: 'lineup', label: 'Studio line-up', caption: 'Escape · Camry · Fusion', cars: [ { src: lineupLeft, alt: '' }, { src: lineupRight, alt: '' }, { src: lineupHero, alt: '2015 Toyota Camry' } ] }}
         backdrop="tunnel"
         seed={4}
         index="GW/02"

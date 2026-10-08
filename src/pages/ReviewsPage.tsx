@@ -10,6 +10,7 @@ import { reviews } from '../data/reviews'
 import { site } from '../config/site'
 import { breadcrumbSchema } from '../config/schema'
 import './ReviewsPage.css'
+import lotFront from '../media/images/lot-white-camry-front.jpg'
 
 export default function ReviewsPage() {
   const hasReviews = reviews.length > 0
@@ -26,6 +27,7 @@ export default function ReviewsPage() {
       />
       <PageHero
         mediaKey="reviews-hero"
+        plate={{ kind: 'photo', src: lotFront, alt: 'White Toyota Camry from the GoldenWay fleet', label: 'GoldenWay fleet', caption: 'Toyota Camry' }}
         backdrop="bokeh"
         seed={37}
         size="medium"

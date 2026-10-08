@@ -12,6 +12,7 @@ import { office, pickupPoints } from '../data/locations'
 import { site, mapsLinks } from '../config/site'
 import { breadcrumbSchema, businessSchema } from '../config/schema'
 import './LocationsPage.css'
+import lotGray from '../media/images/lot-gray-camry.jpg'
 
 export default function LocationsPage() {
   return (
@@ -29,6 +30,7 @@ export default function LocationsPage() {
       />
       <PageHero
         mediaKey="locations-hero"
+        plate={{ kind: 'photo', src: lotGray, alt: 'Grey Toyota Camry from the GoldenWay fleet', label: 'Metro Atlanta', caption: 'Toyota Camry' }}
         backdrop="city"
         seed={29}
         index="GW/06"

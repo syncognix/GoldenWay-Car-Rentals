@@ -4,7 +4,7 @@ import { TechLabel } from '../ui/TechLabel'
 import { Button } from '../ui/Button'
 import { TermsGrid } from './TermsGrid'
 import { brandStory } from '../../data/services'
-import automotiveImage from '../../media/images/goldenway-original.webp'
+import lotCamry from '../../media/images/lot-white-camry.jpg'
 import { useGsap, MOTION_DESKTOP } from '../../hooks/useGsap'
 import { gsap } from '../../lib/gsap'
 import './IntroSection.css'
@@ -46,11 +46,15 @@ export function IntroSection() {
             <div className="intro__media-inner">
               <img
                 className="intro__photo"
-                src={automotiveImage}
-                alt="GoldenWay website artwork showing rental cars against the Atlanta skyline"
+                src={lotCamry}
+                alt="White Toyota Camry from the GoldenWay fleet, parked on the lot"
                 loading="lazy"
                 decoding="async"
               />
+            </div>
+            <div className="intro__plate" aria-hidden="true">
+              <span className="t-mono">GW · Fleet</span>
+              <span className="t-mono">Toyota Camry</span>
             </div>
           </Reveal>
 

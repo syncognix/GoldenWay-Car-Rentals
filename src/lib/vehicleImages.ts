@@ -8,3 +8,6 @@ export function vehicleImages(v: Vehicle): string[] {
 }
 
 export const vehicleCover = (v: Vehicle) => vehicleImages(v)[0]
+
+/** Transparent cutouts (PNG/WebP) sit on a lit studio stage; real photos fill the frame. */
+export const isCutout = (src?: string) => Boolean(src && /\.(png|webp)(\?|$)/i.test(src))

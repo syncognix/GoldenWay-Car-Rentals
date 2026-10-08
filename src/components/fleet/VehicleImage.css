@@ -3,6 +3,53 @@
   height: 100%;
 }
 
+/* ---------- Studio stage for transparent cutouts ----------
+   A cyclorama: soft key light from above, a horizon where wall meets floor,
+   a contact shadow and a faint floor reflection — so every car in the fleet
+   reads as one consistent photo shoot. */
+.vehicle-image--cutout {
+  --stage-key: rgb(214 179 111 / 0.2);
+  --stage-wall: #1d2021;
+  --stage-floor: #0e0f10;
+  --stage-horizon: rgb(255 255 255 / 0.06);
+  --stage-shadow: rgb(0 0 0 / 0.78);
+  background:
+    radial-gradient(58% 46% at 50% 30%, var(--stage-key), transparent 72%),
+    linear-gradient(180deg, transparent 63.5%, var(--stage-horizon) 64%, transparent 64.6%),
+    linear-gradient(180deg, var(--stage-wall) 0%, color-mix(in srgb, var(--stage-wall) 70%, var(--stage-floor)) 64%, var(--stage-floor) 100%);
+  isolation: isolate;
+}
+:root[data-theme='light'] .vehicle-image--cutout:not(.surface-dark *) {
+  --stage-key: rgb(255 255 255 / 0.95);
+  --stage-wall: #ebe6db;
+  --stage-floor: #d9d2c3;
+  --stage-horizon: rgb(255 255 255 / 0.5);
+  --stage-shadow: rgb(46 36 20 / 0.42);
+}
+.vehicle-image--cutout img {
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+  object-position: 50% 64%;
+  padding: 9% 10% 13%;
+}
+.smart-image.is-loaded.vehicle-image--cutout img {
+  filter: drop-shadow(0 14px 16px rgb(0 0 0 / 0.38));
+}
+/* Contact shadow pooled under the tyres */
+.vehicle-image--cutout::before {
+  content: '';
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 12%;
+  height: 9%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--stage-shadow), transparent);
+  filter: blur(4px);
+}
+
 .vehicle-ph {
   position: absolute;
   inset: 0;

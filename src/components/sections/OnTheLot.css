@@ -1,0 +1,289 @@
+/* Continues the dark fleet band: real footage after the studio line-up. */
+.lot {
+  position: relative;
+  background:
+    radial-gradient(46% 38% at 82% 12%, rgb(214 179 111 / 0.07), transparent 100%),
+    #0c0e0f;
+  color: var(--fg);
+  padding-block: clamp(24px, 3vw, 40px) clamp(96px, 11vw, 168px);
+  overflow: hidden;
+}
+
+.lot__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  align-items: end;
+  gap: 28px clamp(32px, 6vw, 96px);
+  padding-top: clamp(56px, 7vw, 104px);
+  border-top: 1px solid rgb(255 255 255 / 0.09);
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+.lot__title-wrap {
+  display: grid;
+  gap: 22px;
+}
+.lot__title {
+  font-size: clamp(2.75rem, 6.2vw, 6.25rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: var(--tracking-display);
+}
+.lot__intro {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+  padding-bottom: 6px;
+}
+.lot__intro .t-lead {
+  color: var(--fg-2);
+  max-width: 36ch;
+}
+
+/* Staggered row of portrait clips — a contact sheet of the lot */
+.lot__rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 1.8vw, 28px);
+  align-items: start;
+}
+.lot__item:nth-child(even) {
+  margin-top: clamp(32px, 6vw, 96px);
+}
+
+.lot-clip {
+  display: grid;
+  gap: 14px;
+}
+.lot-clip__frame {
+  position: relative;
+  aspect-ratio: 9 / 14;
+  overflow: hidden;
+  border-radius: clamp(16px, 1.6vw, 24px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: #151819;
+  box-shadow: 0 40px 90px -50px rgb(0 0 0 / 0.95);
+  isolation: isolate;
+}
+.lot-clip__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.04);
+  transform: scale(1.02);
+  transition:
+    transform 1.6s var(--ease-out),
+    filter 1.2s var(--ease-out);
+}
+/* Cinematic grade: warm top light, crushed base, fine gold edge */
+.lot-clip__frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgb(12 14 15 / 0.32) 0%, transparent 22%, transparent 64%, rgb(8 9 10 / 0.72) 100%),
+    linear-gradient(135deg, rgb(214 179 111 / 0.14), transparent 46%);
+  box-shadow: inset 0 0 0 1px rgb(214 179 111 / 0.08);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .lot-clip:hover .lot-clip__video {
+    transform: scale(1.06);
+    filter: saturate(1.04) contrast(1.06);
+  }
+}
+
+.lot-clip__rec {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 9px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-label);
+  color: rgb(247 244 236 / 0.86);
+  background: rgb(10 11 12 / 0.46);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
+.lot-clip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  animation: lot-pulse 2.4s var(--ease-in-out) infinite;
+}
+@keyframes lot-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lot-clip__dot {
+    animation: none;
+  }
+}
+
+.lot-clip__cap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  font-size: var(--fs-small);
+  color: var(--fg-2);
+}
+.lot-clip__cap .t-mono {
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 1023px) {
+  .lot__head {
+    grid-template-columns: 1fr;
+  }
+  /* Swipeable rail on tablets and phones */
+  .lot__rail {
+    display: flex;
+    gap: 14px;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .lot__rail::-webkit-scrollbar {
+    display: none;
+  }
+  .lot__item {
+    flex: 0 0 min(62vw, 300px);
+    scroll-snap-align: start;
+  }
+  .lot__item:nth-child(even) {
+    margin-top: 0;
+  }
+  .lot-clip__cap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Read as one dark band with the fleet section above */
+.fleet-show:has(+ .lot) {
+  padding-bottom: clamp(40px, 4vw, 64px);
+}
+.lot {
+  padding-top: 0;
+}
+
+/* ==========================================================================
+   Art direction: an editorial collage, not a row of cards.
+   Four sizes, a deliberate overlap, depth parallax and mask reveals.
+   ========================================================================== */
+.lot {
+  isolation: isolate;
+}
+.lot__ghost {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 6%;
+  font-size: clamp(8rem, 21vw, 22rem);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(236 213 164 / 0.11);
+  pointer-events: none;
+  user-select: none;
+}
+.lot-clip__cap span:first-child {
+  color: var(--fg);
+}
+
+@media (min-width: 1024px) {
+  .lot__rail {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(14px, 1.6vw, 24px);
+    align-items: start;
+  }
+  .lot__item:nth-child(even) {
+    margin-top: 0;
+  }
+  /* 01 — the lead: tall, anchored left */
+  .lot__item {
+    grid-row: 1;
+  }
+  .lot__item:nth-child(1) {
+    grid-column: 1 / span 4;
+  }
+  .lot__item:nth-child(1) .lot-clip__frame {
+    aspect-ratio: 9 / 13;
+  }
+  /* 02 — smaller, dropped low */
+  .lot__item:nth-child(2) {
+    grid-column: 5 / span 3;
+    margin-top: 15vw;
+  }
+  .lot__item:nth-child(2) .lot-clip__frame {
+    aspect-ratio: 4 / 5;
+  }
+  /* 03 — the detail shot, high on the right */
+  .lot__item:nth-child(3) {
+    grid-column: 9 / span 4;
+    margin-top: -3vw;
+  }
+  .lot__item:nth-child(3) .lot-clip__frame {
+    aspect-ratio: 3 / 4;
+  }
+  /* 04 — a small insert that overlaps 03 */
+  .lot__item:nth-child(4) {
+    grid-column: 8 / span 2;
+    z-index: 2;
+    margin-top: 27vw;
+    align-self: start;
+  }
+  .lot__item:nth-child(4) .lot-clip__frame {
+    aspect-ratio: 9 / 14;
+    box-shadow:
+      0 0 0 6px #0c0e0f,
+      0 40px 80px -30px rgb(0 0 0 / 0.95);
+  }
+  .lot__item:nth-child(4) .lot-clip__cap {
+    border-top: 0;
+    padding-top: 6px;
+  }
+  .lot__head {
+    margin-bottom: clamp(56px, 7vw, 112px);
+  }
+}
+@media (min-width: 1024px) {
+  .lot {
+    padding-bottom: clamp(72px, 7vw, 112px);
+  }
+  .lot__item:nth-child(3) {
+    margin-top: 1vw;
+  }
+  .lot__item:nth-child(4) .lot-clip__cap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+}

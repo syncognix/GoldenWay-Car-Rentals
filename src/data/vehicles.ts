@@ -181,7 +181,11 @@ export const availableCategories = (Object.keys(categoryLabels) as VehicleCatego
 )
 
 /** Spec chips built strictly from published vehicle data. */
-export const vehicleSpecList = (v: Vehicle) =>
-  [`${v.seats} seats`, `${v.doors} doors`, v.airConditioning ? 'A/C' : null, v.fuel ?? null, categoryLabels[v.category]].filter(
-    (s): s is string => Boolean(s),
-  )
+// Deduped: a hybrid's fuel and category are both "Hybrid".
+export const vehicleSpecList = (v: Vehicle) => [
+  ...new Set(
+    [`${v.seats} seats`, `${v.doors} doors`, v.airConditioning ? 'A/C' : null, v.fuel ?? null, categoryLabels[v.category]].filter(
+      (s): s is string => Boolean(s),
+    ),
+  ),
+]

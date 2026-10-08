@@ -2,7 +2,7 @@ import { useRef, useState, type CSSProperties } from 'react'
 import { gallery, type GalleryItem } from '../../data/gallery'
 import { getVehicle } from '../../data/vehicles'
 import { getImage } from '../../media'
-import { vehicleImages } from '../../lib/vehicleImages'
+import { isCutout, vehicleImages } from '../../lib/vehicleImages'
 import { useGsap, MOTION_DESKTOP } from '../../hooks/useGsap'
 import { useReveal } from '../../hooks/useReveal'
 import { gsap } from '../../lib/gsap'
@@ -112,7 +112,12 @@ function Tile({ item, index, onOpen }: { item: Resolved; index: number; onOpen: 
     item.kind === 'scene' && !item.src ? (
       <CinematicBackdrop variant={item.backdrop} seed={index + 3} />
     ) : (
-      <SmartImage src={item.src} alt={caption} fallback={<VehiclePlaceholder label={caption} />} className="mg-media__img" />
+      <SmartImage
+        src={item.src}
+        alt={caption}
+        fallback={<VehiclePlaceholder label={caption} />}
+        className={`mg-media__img ${item.kind === 'photo' && isCutout(item.src) ? 'vehicle-image--cutout' : ''}`}
+      />
     )
 
   const frame = (

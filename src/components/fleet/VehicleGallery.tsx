@@ -20,6 +20,11 @@ export function VehicleGallery({ vehicle }: { vehicle: Vehicle }) {
       <ul role="list" className={`vgallery vgallery--${Math.min(images.length, 5)}`}>
         {images.map((_, i) => (
           <Reveal as="li" key={i} kind="mask" delay={i * 80} className="vgallery__item">
+            {images.length === 1 && (
+              <span className="vgallery__ghost" aria-hidden="true">
+                {vehicle.model}
+              </span>
+            )}
             <button type="button" className="vgallery__btn" onClick={() => setOpen(i)} data-cursor="view" aria-label={`Enlarge photo ${i + 1} of ${images.length}`}>
               <VehicleImage vehicle={vehicle} index={i} />
             </button>

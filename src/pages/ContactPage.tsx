@@ -12,6 +12,8 @@ import { site, addressLines, mapsLinks } from '../config/site'
 import { featuredFaqs } from '../data/faqs'
 import { breadcrumbSchema, businessSchema } from '../config/schema'
 import './ContactPage.css'
+import lotCabin from '../media/lot/lot-impreza-cabin.webm'
+import lotCabinPoster from '../media/lot/lot-impreza-cabin.jpg'
 
 const channels: { icon: IconName; label: string; value: string; href: string; note: string }[] = [
   { icon: 'phone', label: 'Call', value: site.phone.display, href: site.phone.href, note: `${site.hours[0].days}, ${site.hours[0].label}` },
@@ -35,6 +37,7 @@ export default function ContactPage() {
       />
       <PageHero
         mediaKey="contact-hero"
+        plate={{ kind: 'clip', src: lotCabin, poster: lotCabinPoster, label: 'Real footage', caption: '2020 Subaru Impreza' }}
         backdrop="road"
         seed={47}
         index="GW/10"

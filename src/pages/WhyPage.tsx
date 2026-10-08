@@ -11,6 +11,8 @@ import { pillars } from '../data/services'
 import { breadcrumbSchema } from '../config/schema'
 import { rateLabel } from '../config/site'
 import './WhyPage.css'
+import lotImpreza from '../media/lot/lot-impreza.webm'
+import lotImprezaPoster from '../media/lot/lot-impreza.jpg'
 
 export default function WhyPage() {
   return (
@@ -25,6 +27,7 @@ export default function WhyPage() {
       />
       <PageHero
         mediaKey="why-hero"
+        plate={{ kind: 'clip', src: lotImpreza, poster: lotImprezaPoster, label: 'Real footage', caption: '2020 Subaru Impreza' }}
         backdrop="bokeh"
         seed={23}
         index="GW/05"
