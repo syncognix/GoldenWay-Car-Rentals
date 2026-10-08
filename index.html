@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    //
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- <title>, description, canonical and Open Graph tags are rendered per page by <Seo />. -->
+    <meta name="theme-color" content="#080808" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Resolve theme before first paint: stored choice → OS preference. -->
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('gw-theme')
+          var theme = stored === 'light' || stored === 'dark' ? stored : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+          document.documentElement.dataset.theme = theme
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'light' ? '#f5f2ea' : '#080808')
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="padding: 48px 24px; font-family: system-ui, sans-serif; max-width: 640px; margin: 0 auto">
+        <h1>GoldenWay Car Rentals</h1>
+        <p>Weekly and monthly car rentals in Atlanta, Georgia.</p>
+        <p>Call <a href="tel:+14707961836">+1 470-796-1836</a> or email <a href="mailto:support@rentgoldenway.com">support@rentgoldenway.com</a>.</p>
+        <p>235 Peachtree St. NE, Suite 400, Atlanta, GA 30303</p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

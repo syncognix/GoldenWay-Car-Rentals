@@ -1,0 +1,87 @@
+/* Hairline progress across the top edge (all sizes) */
+.scroll-progress-top {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 70;
+  pointer-events: none;
+}
+.scroll-progress-top__bar {
+  --p: 0;
+  display: block;
+  height: 100%;
+  background: var(--metal);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p));
+}
+
+/* Vertical chapter rail (desktop) */
+.scroll-progress {
+  position: fixed;
+  right: clamp(14px, 1.6vw, 28px);
+  top: 50%;
+  z-index: 40;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  transform: translateY(-50%);
+  mix-blend-mode: difference;
+  color: #f5f2ea;
+  pointer-events: none;
+}
+.scroll-progress__count {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  font-size: 0.625rem;
+  opacity: 0.8;
+}
+.scroll-progress__current {
+  color: #f5f2ea;
+}
+.scroll-progress__sep {
+  width: 1px;
+  height: 10px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.scroll-progress__ticks {
+  display: grid;
+  gap: 7px;
+}
+.scroll-progress__ticks li {
+  width: 10px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transition:
+    width 500ms var(--ease-out),
+    opacity 500ms;
+}
+.scroll-progress__ticks li.is-past {
+  opacity: 0.6;
+}
+.scroll-progress__ticks li.is-active {
+  width: 22px;
+  opacity: 1;
+}
+.scroll-progress__name {
+  writing-mode: vertical-rl;
+  font-size: 0.5625rem;
+  letter-spacing: 0.3em;
+  opacity: 0.75;
+  animation: chapter-in 700ms var(--ease-out);
+}
+@keyframes chapter-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .scroll-progress {
+    display: none;
+  }
+}

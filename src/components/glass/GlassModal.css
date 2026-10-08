@@ -1,0 +1,38 @@
+.glass-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 3vw, 48px);
+  background: rgb(4 4 4 / 0.72);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  color: var(--fg);
+}
+.glass-modal__dialog {
+  position: relative;
+  width: min(1200px, 100%);
+  max-height: 100%;
+  display: grid;
+  gap: 14px;
+}
+.glass-modal__bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.glass-modal__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-line);
+  background: var(--glass-bg);
+  color: var(--fg);
+  transition: border-color var(--dur-2);
+}
+.glass-modal__btn:hover {
+  border-color: var(--gold);
+}

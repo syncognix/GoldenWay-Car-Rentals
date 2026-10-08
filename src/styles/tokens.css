@@ -1,0 +1,139 @@
+/* ==========================================================================
+   GoldenWay design tokens
+   Theme is driven by [data-theme] on <html> (set pre-paint in index.html).
+   `.surface-dark` forces the dark palette locally — used for cinematic
+   surfaces (heroes, final CTA, footer) that stay dark in both themes.
+   ========================================================================== */
+
+:root {
+  /* Typography */
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --fs-display: clamp(3.25rem, 11.2vw, 12rem);
+  --fs-h1: clamp(2.75rem, 7.4vw, 7.5rem);
+  --fs-h2: clamp(2.125rem, 4.8vw, 4.875rem);
+  --fs-h3: clamp(1.375rem, 2.1vw, 2rem);
+  --fs-h4: clamp(1.125rem, 1.4vw, 1.375rem);
+  --fs-lead: clamp(1.0625rem, 1.25vw, 1.3125rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.6875rem;
+
+  --tracking-tight: -0.035em;
+  --tracking-display: -0.045em;
+  --tracking-label: 0.16em;
+
+  /* Layout */
+  --gutter: clamp(16px, 4.2vw, 64px);
+  --maxw: 1560px;
+  --section: clamp(88px, 10vw, 168px);
+  --header-h: 76px;
+
+  /* Shape — softly rounded, like a modern automotive instrument panel */
+  --r-xs: 4px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-pill: 999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-snap: cubic-bezier(0.7, 0, 0.2, 1);
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --dur-3: 640ms;
+  --dur-4: 1100ms;
+
+  /* Metallic champagne — used sparingly */
+  --metal: linear-gradient(118deg, #f0dfb6 0%, #d4b47a 38%, #b8935a 68%, #dcc28c 100%);
+}
+
+/* ---------- Dark (default) ---------- */
+:root,
+:root[data-theme='dark'],
+.surface-dark {
+  color-scheme: dark;
+  --bg: #0a0c0d;
+  --bg-1: #111516;
+  --bg-2: #191e1f;
+  --bg-3: #252b2c;
+  --fg: #f7f4ec;
+  --fg-2: rgb(247 244 236 / 0.78);
+  --fg-3: rgb(247 244 236 / 0.56);
+  --line: rgb(247 244 236 / 0.1);
+  --line-2: rgb(247 244 236 / 0.22);
+  --gold: #d6b36f;
+  --gold-2: #ecd5a4;
+  --gold-3: #a9874e;
+  --on-gold: #0b0a08;
+  --accent-ink: #cfae72;
+
+  --glass-bg: rgb(19 20 20 / 0.58);
+  --glass-bg-strong: rgb(14 15 15 / 0.84);
+  --glass-line: rgb(255 255 255 / 0.09);
+  --glass-hi: rgb(255 255 255 / 0.14);
+  --glass-reed: rgb(255 255 255 / 0.035);
+
+  --shadow-1: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 22px 60px -28px rgb(0 0 0 / 0.84);
+  --shadow-2: 0 44px 130px -42px rgb(0 0 0 / 0.92);
+  --focus: #e6cf9f;
+  --danger: #f2a08c;
+  --success: #b9d7a8;
+  --grain-opacity: 0.07;
+}
+
+/* ---------- Light ---------- */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f2efe8;
+  --bg-1: #fbfaf6;
+  --bg-2: #e9e5dc;
+  --bg-3: #dcd7ca;
+  --fg: #171916;
+  --fg-2: rgb(23 25 22 / 0.78);
+  --fg-3: rgb(23 25 22 / 0.58);
+  --line: rgb(17 18 16 / 0.1);
+  --line-2: rgb(17 18 16 / 0.2);
+  --gold: #96733a;
+  --gold-2: #b99455;
+  --gold-3: #6f5429;
+  --on-gold: #fbf8f1;
+  --accent-ink: #7d5e27;
+
+  --glass-bg: rgb(250 248 242 / 0.62);
+  --glass-bg-strong: rgb(250 248 242 / 0.86);
+  --glass-line: rgb(13 13 12 / 0.09);
+  --glass-hi: rgb(255 255 255 / 0.7);
+  --glass-reed: rgb(255 255 255 / 0.22);
+
+  --shadow-1: 0 1px 0 rgb(255 255 255 / 0.86) inset, 0 22px 56px -30px rgb(40 32 18 / 0.24);
+  --shadow-2: 0 40px 110px -44px rgb(40 32 18 / 0.32);
+  --focus: #6b5022;
+  --danger: #a3361f;
+  --success: #3f6b2a;
+  --grain-opacity: 0.05;
+}
+
+/* No-JS fallback: honour the OS preference */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --bg: #f2efe8;
+    --bg-1: #fbfaf6;
+    --bg-2: #e9e5dc;
+    --fg: #171916;
+    --fg-2: rgb(23 25 22 / 0.78);
+    --fg-3: rgb(23 25 22 / 0.58);
+    --line: rgb(17 18 16 / 0.1);
+    --gold: #96733a;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-h: 64px;
+  }
+}

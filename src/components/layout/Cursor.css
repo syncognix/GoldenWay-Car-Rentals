@@ -1,0 +1,49 @@
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms;
+  will-change: transform;
+}
+.cursor.is-visible {
+  opacity: 1;
+}
+.cursor__ring {
+  position: absolute;
+  left: -18px;
+  top: -18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgb(207 174 114 / 0.6);
+  transition:
+    transform 450ms var(--ease-out),
+    background-color 300ms,
+    border-color 300ms;
+}
+.cursor[data-state='hover'] .cursor__ring {
+  transform: scale(1.5);
+  border-color: rgb(207 174 114 / 0.9);
+  background: rgb(207 174 114 / 0.06);
+}
+.cursor[data-state='view'] .cursor__ring,
+.cursor[data-state='drag'] .cursor__ring {
+  transform: scale(2.6);
+  border-color: transparent;
+  background: rgb(207 174 114 / 0.92);
+}
+.cursor.is-down .cursor__ring {
+  transform: scale(0.8);
+}
+.cursor__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  font-size: 0.5625rem;
+  color: #0b0a08;
+  white-space: nowrap;
+}

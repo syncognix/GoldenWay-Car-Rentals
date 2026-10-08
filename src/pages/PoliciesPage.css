@@ -1,0 +1,111 @@
+.policies__grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 3fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 112px);
+  align-items: start;
+}
+.policies__toc {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  display: grid;
+  gap: 18px;
+}
+.policies__toc ol {
+  border-top: 1px solid var(--line);
+}
+.policies__toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  min-height: 44px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--fg-3);
+  font-size: 0.9375rem;
+  transition: color var(--dur-2);
+}
+.policies__toc a:hover,
+.policies__toc a.is-active {
+  color: var(--fg);
+}
+.policies__toc a.is-active .t-mono {
+  color: var(--accent-ink);
+}
+.policies__toc .t-small a {
+  display: inline;
+  border: 0;
+  padding: 0;
+  min-height: 0;
+  text-decoration: underline;
+}
+
+.policies__doc {
+  display: grid;
+  gap: clamp(56px, 7vw, 104px);
+  max-width: 76ch;
+}
+.policy {
+  display: grid;
+  gap: 22px;
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+.policy__head {
+  display: grid;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line-2);
+}
+.policy__pending,
+.policy__summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  font-size: 0.5625rem;
+}
+.policy__pending {
+  border: 1px dashed var(--gold);
+  color: var(--accent-ink);
+}
+.policy__summary {
+  border: 1px solid var(--line-2);
+  color: var(--fg-3);
+}
+.policy__block {
+  display: grid;
+  gap: 14px;
+  color: var(--fg-2);
+}
+.policy__block h3 {
+  color: var(--fg);
+}
+.policy__block ul {
+  display: grid;
+  gap: 10px;
+  padding-left: 0;
+  list-style: none;
+}
+.policy__block li {
+  position: relative;
+  padding-left: 24px;
+}
+.policy__block li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 12px;
+  height: 1px;
+  background: var(--gold);
+}
+
+@media (max-width: 899px) {
+  .policies__grid {
+    grid-template-columns: 1fr;
+  }
+  .policies__toc {
+    position: static;
+  }
+}

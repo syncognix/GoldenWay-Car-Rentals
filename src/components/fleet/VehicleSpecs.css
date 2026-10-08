@@ -1,0 +1,13 @@
+.vehicle-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: var(--fg-2);
+}
+.vehicle-specs li {
+  padding: 6px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-pill);
+  line-height: 1;
+  font-size: 0.625rem;
+}

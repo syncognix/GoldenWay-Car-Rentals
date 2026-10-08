@@ -1,0 +1,49 @@
+.bsum {
+  display: grid;
+  gap: 18px;
+  padding: clamp(20px, 2vw, 28px);
+}
+.bsum__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+}
+.bsum__media .smart-image {
+  position: absolute;
+  inset: 0;
+}
+.bsum__list {
+  display: grid;
+}
+.bsum__list > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9375rem;
+}
+.bsum__list dt {
+  color: var(--fg-3);
+  padding-top: 3px;
+}
+.bsum__rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.bsum__price {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  letter-spacing: -0.03em;
+}
+.bsum__terms {
+  display: grid;
+  gap: 6px;
+}
+.bsum__terms li::before {
+  content: '— ';
+  color: var(--accent-ink);
+}

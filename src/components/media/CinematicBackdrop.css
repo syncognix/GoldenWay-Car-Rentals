@@ -1,0 +1,54 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 70% at 50% var(--horizon), rgb(207 174 114 / calc(0.2 * var(--glow))) 0%, transparent 55%),
+    radial-gradient(60% 30% at 50% var(--horizon), rgb(255 214 150 / calc(0.16 * var(--glow))) 0%, transparent 70%),
+    linear-gradient(180deg, #040404 0%, #0b0a09 calc(var(--horizon) - 4%), #0d0b08 var(--horizon), #050505 100%);
+  isolation: isolate;
+}
+
+.backdrop__sky {
+  position: absolute;
+  inset: 0 0 calc(100% - var(--horizon)) 0;
+  background:
+    radial-gradient(1px 1px at 12% 18%, rgb(255 255 255 / 0.35), transparent),
+    radial-gradient(1px 1px at 37% 9%, rgb(255 255 255 / 0.25), transparent),
+    radial-gradient(1px 1px at 68% 22%, rgb(255 255 255 / 0.3), transparent),
+    radial-gradient(1px 1px at 84% 12%, rgb(255 255 255 / 0.22), transparent);
+  opacity: 0.6;
+}
+
+.backdrop__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.backdrop__skyline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - var(--horizon));
+  width: 100%;
+  height: 46%;
+}
+.backdrop__windows {
+  fill: rgb(230 196 132 / 0.55);
+}
+.backdrop__beacon {
+  fill: #ff5a3c;
+  animation: beacon 2.4s ease-in-out infinite;
+}
+
+/* Atmospheric haze across the horizon line */
+.backdrop__haze {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent calc(var(--horizon) - 10%), rgb(207 174 114 / 0.05) var(--horizon), transparent calc(var(--horizon) + 14%)),
+    radial-gradient(140% 90% at 50% 50%, transparent 40%, rgb(0 0 0 / 0.7) 100%);
+  pointer-events: none;
+}

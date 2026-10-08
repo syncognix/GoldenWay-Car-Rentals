@@ -1,0 +1,11 @@
+.why-terms {
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--line);
+}
+.why-pillars__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-top: clamp(40px, 5vw, 64px);
+}

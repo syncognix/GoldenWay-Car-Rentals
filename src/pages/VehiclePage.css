@@ -1,0 +1,142 @@
+.vehicle-hero-rate {
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+  text-align: right;
+}
+.vehicle-hero-rate .t-mono {
+  color: var(--fg-3);
+}
+.vehicle-hero-rate .t-num {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 4.6vw, 4.75rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+@media (max-width: 1023px) {
+  .vehicle-hero-rate {
+    justify-items: start;
+    text-align: left;
+  }
+}
+
+.vehicle-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 120px);
+  align-items: start;
+}
+.vehicle-overview__intro {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+
+.spec-sheet {
+  border-top: 1px solid var(--line-2);
+}
+.spec-sheet__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 24px;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+  transition: background-color var(--dur-2);
+}
+.spec-sheet__row:hover {
+  background: linear-gradient(90deg, rgb(207 174 114 / 0.06), transparent 70%);
+}
+.spec-sheet dt {
+  color: var(--fg-3);
+  padding-top: 4px;
+}
+.spec-sheet dd {
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+}
+
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.included-grid__item {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: clamp(22px, 2.6vw, 40px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background-color var(--dur-3);
+}
+.included-grid__item:hover {
+  background: var(--bg-1);
+}
+
+.rental-info {
+  background: var(--bg-1);
+  border-block: 1px solid var(--line);
+}
+.rental-info__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) auto;
+  gap: 40px;
+  align-items: start;
+}
+.rental-info__title {
+  margin-top: 18px;
+}
+.rental-info__list {
+  display: grid;
+  gap: 14px;
+  color: var(--fg-2);
+}
+.rental-info__list li {
+  position: relative;
+  padding-left: 22px;
+}
+.rental-info__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 10px;
+  height: 1px;
+  background: var(--gold);
+}
+.rental-info__links {
+  display: grid;
+  justify-items: start;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+}
+.related-grid > li {
+  display: grid;
+}
+
+@media (max-width: 1023px) {
+  .vehicle-overview,
+  .rental-info__grid {
+    grid-template-columns: 1fr;
+  }
+  .vehicle-overview__intro {
+    position: static;
+  }
+  .included-grid,
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 599px) {
+  .included-grid,
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}

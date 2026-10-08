@@ -1,0 +1,115 @@
+.fleet-hero-meta {
+  display: flex;
+  gap: clamp(24px, 4vw, 56px);
+}
+.fleet-hero-meta div {
+  display: grid;
+  gap: 6px;
+}
+.fleet-hero-meta dt {
+  color: var(--fg-3);
+}
+.fleet-hero-meta dd {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 4.4vw, 4.5rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.fleet-list__bar {
+  position: sticky;
+  top: calc(var(--header-h) - 2px);
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(32px, 4vw, 56px);
+  padding-block: 12px;
+  background: linear-gradient(var(--bg) 70%, transparent);
+}
+
+.fleet-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--bg-1);
+}
+.fleet-filter__chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: var(--r-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--fg-2);
+  transition: color var(--dur-2);
+}
+.fleet-filter__chip:hover {
+  color: var(--fg);
+}
+.fleet-filter__chip.is-active {
+  color: var(--on-gold);
+}
+.fleet-filter__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--gold);
+}
+.fleet-filter__label,
+.fleet-filter__count {
+  position: relative;
+}
+.fleet-filter__count {
+  opacity: 0.7;
+}
+
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.fleet-grid > li {
+  display: grid;
+}
+.fleet-grid__featured {
+  grid-column: span 2;
+}
+
+@media (max-width: 1100px) {
+  .fleet-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 679px) {
+  .fleet-grid {
+    grid-template-columns: 1fr;
+  }
+  .fleet-grid__featured {
+    grid-column: auto;
+  }
+  .fleet-list__status {
+    display: none;
+  }
+  .fleet-filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 100%;
+    scrollbar-width: none;
+  }
+  .fleet-filter__chip {
+    flex: none;
+    padding: 0 14px;
+  }
+}

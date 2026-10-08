@@ -1,0 +1,70 @@
+.glass {
+  position: relative;
+  isolation: isolate;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  box-shadow:
+    inset 0 1px 0 var(--glass-hi),
+    var(--shadow-1);
+}
+
+/* Liquid: soft specular bloom that tracks the pointer */
+.glass--liquid {
+  --gx: 30%;
+  --gy: 0%;
+  overflow: hidden;
+}
+.glass__specular {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(420px circle at var(--gx) var(--gy), rgb(255 255 255 / 0.09), transparent 45%),
+    linear-gradient(160deg, rgb(255 255 255 / 0.06), transparent 40%);
+  transition: opacity var(--dur-3) var(--ease-out);
+}
+:root[data-theme='light'] .glass:not(.surface-dark *) .glass__specular {
+  background:
+    radial-gradient(420px circle at var(--gx) var(--gy), rgb(255 255 255 / 0.7), transparent 45%),
+    linear-gradient(160deg, rgb(255 255 255 / 0.5), transparent 40%);
+}
+
+/* Reeded: fluted ribs */
+.glass--reeded {
+  overflow: hidden;
+}
+.glass__reeds {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--glass-reed) 0px,
+      transparent 2px,
+      transparent 5px,
+      rgb(0 0 0 / 0.05) 7px,
+      var(--glass-reed) 9px
+    ),
+    linear-gradient(180deg, rgb(255 255 255 / 0.05), transparent 60%);
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+}
+
+@media (max-width: 767px) {
+  .glass {
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: var(--glass-bg-strong);
+  }
+}

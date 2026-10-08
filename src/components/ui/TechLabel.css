@@ -1,0 +1,62 @@
+.tech-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg-3);
+}
+.tech-label__index {
+  color: var(--accent-ink);
+}
+.tech-label__rule {
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.tech-label__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgb(207 174 114 / 0.6);
+  animation: tech-pulse 2.6s var(--ease-out) infinite;
+}
+@keyframes tech-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(207 174 114 / 0.55); }
+  70%, 100% { box-shadow: 0 0 0 9px rgb(207 174 114 / 0); }
+}
+
+/* Glitch — restrained, hover only */
+.tech-label__text {
+  position: relative;
+}
+.tech-label--glitch .tech-label__text::before,
+.tech-label--glitch .tech-label__text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.tech-label--glitch .tech-label__text::before {
+  color: #ff5a3c;
+}
+.tech-label--glitch .tech-label__text::after {
+  color: #6ad3ff;
+}
+.tech-label--glitch:hover .tech-label__text::before {
+  animation: glitch-a 420ms steps(2) 1;
+}
+.tech-label--glitch:hover .tech-label__text::after {
+  animation: glitch-b 420ms steps(2) 1;
+}
+@keyframes glitch-a {
+  0% { opacity: 0.8; transform: translate(-2px, 0); clip-path: inset(0 0 55% 0); }
+  50% { opacity: 0.8; transform: translate(2px, 0); clip-path: inset(45% 0 0 0); }
+  100% { opacity: 0; transform: none; }
+}
+@keyframes glitch-b {
+  0% { opacity: 0.8; transform: translate(2px, 0); clip-path: inset(50% 0 0 0); }
+  50% { opacity: 0.8; transform: translate(-2px, 0); clip-path: inset(0 0 60% 0); }
+  100% { opacity: 0; transform: none; }
+}

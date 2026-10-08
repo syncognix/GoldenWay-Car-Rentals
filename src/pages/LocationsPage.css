@@ -1,0 +1,101 @@
+.loc-office {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 6vw, 112px);
+  align-items: center;
+}
+.loc-office__info {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+.loc-office__address {
+  display: grid;
+  font-style: normal;
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+.loc-office__meta {
+  display: grid;
+  width: 100%;
+  border-top: 1px solid var(--line);
+}
+.loc-office__meta > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.loc-office__meta dt {
+  color: var(--fg-3);
+}
+.loc-office__meta a:hover {
+  color: var(--accent-ink);
+}
+.loc-office__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.loc-pickups {
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+}
+.loc-pickups__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 24px);
+}
+.loc-pickups__grid > li,
+.pickup-card {
+  height: 100%;
+}
+.pickup-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: clamp(22px, 2.4vw, 32px);
+}
+.pickup-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.pickup-card__badge {
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--gold);
+  color: var(--accent-ink);
+  font-size: 0.5625rem;
+}
+.pickup-card__name {
+  font-size: 1.0625rem;
+  color: var(--fg-2);
+}
+.pickup-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  width: fit-content;
+}
+.pickup-card__link:hover {
+  color: var(--accent-ink);
+}
+.loc-pickups__note {
+  margin-top: 28px;
+  max-width: 70ch;
+}
+
+@media (max-width: 899px) {
+  .loc-office,
+  .loc-pickups__grid {
+    grid-template-columns: 1fr;
+  }
+}

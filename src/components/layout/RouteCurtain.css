@@ -1,0 +1,22 @@
+.route-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(60% 40% at 50% 60%, rgb(207 174 114 / 0.12), transparent 70%),
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.02) 0 1px, transparent 1px 8px),
+    #080808;
+  pointer-events: none;
+}
+.route-curtain__mark {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  color: var(--fg);
+}
+.route-curtain__title {
+  letter-spacing: 0.32em;
+  color: var(--fg-2);
+}

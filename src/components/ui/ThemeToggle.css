@@ -1,0 +1,30 @@
+.theme-toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-2);
+  color: var(--fg);
+  overflow: hidden;
+  transition: border-color var(--dur-2) var(--ease-out), background-color var(--dur-2);
+}
+.theme-toggle:hover {
+  border-color: var(--gold);
+}
+.theme-toggle__icons {
+  display: grid;
+}
+.theme-toggle__icons > svg {
+  grid-area: 1 / 1;
+  transition:
+    transform 700ms var(--ease-out),
+    opacity 400ms var(--ease-out);
+}
+/* Dark → show moon; light → show sun. Icons orbit on change. */
+.theme-toggle__icons.is-dark > svg:last-child,
+.theme-toggle__icons.is-light > svg:first-child {
+  opacity: 0;
+  transform: rotate(90deg) translateY(14px) scale(0.6);
+}
